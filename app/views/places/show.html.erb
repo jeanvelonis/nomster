@@ -54,4 +54,11 @@
   </div>
 </div>
 
+<div class="clear"></div>
+<%= simple_form_for @comments, url: '#' do |f| %>
+  <%= f.input :message %>
+  <%= f.input :rating %>
+  <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+<% end %>
+
 
