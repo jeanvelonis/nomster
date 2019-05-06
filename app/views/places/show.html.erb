@@ -3,34 +3,50 @@
   <i><%= @place.address %></i>
   <br/><br/>
   <p><%= @place.description %></p>
+
+
+
 <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
 
-  </style>
-  <script>
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
 
-    function initMap() {
-      var myLatLng = {lat: -25.363, lng: 131.044};
+<% if @place.latitude.present? && @place.longitude.present? %>
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: myLatLng
-      });
+    <script>
 
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-    }
-  </script>
+      function initMap() {
+        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPMsnNvD9ly_cO8SmQSMd0Xvi0QOdLYhM&callback=initMap">
-  </script>
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
 
-<div id="map"></div>
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2QWmT1k9Bucm_p4_CR34mFZJnB1Q22h4&callback=initMap">
+    </script>
 
-  <div class="float-right">
+  <div id="map"></div>
+  <% end %>
+
+  <br />
+
+ <div class="float-right">
     <% if current_user && current_user == @place.user %>
       <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
       <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
