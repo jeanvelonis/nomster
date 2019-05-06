@@ -3,6 +3,36 @@
   <i><%= @place.address %></i>
   <br/><br/>
   <p><%= @place.description %></p>
+
+<style>
+    #map {
+      height: 100%;
+    }
+  </style>
+  <script>
+
+    function initMap() {
+      var myLatLng = {lat: -25.363, lng: 131.044};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+  </script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2QWmT1k9Bucm_p4_CR34mFZJnB1Q22h4&callback=initMap">
+  </script>
+
+<div id="map"></div>
+
   <div class="float-right">
     <% if current_user && current_user == @place.user %>
       <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
