@@ -28,9 +28,13 @@ def edit
     redirect_to root_path
   end
 
+  def destroy
+  end
+
  private
 
 def place_params
   params.require(:place).permit(:name, :description, :address)
 end
 end
+
