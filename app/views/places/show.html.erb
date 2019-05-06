@@ -3,11 +3,8 @@
   <i><%= @place.address %></i>
   <br/><br/>
   <p><%= @place.description %></p>
-
 <style>
-    #map {
-      height: 100%;
-    }
+
   </style>
   <script>
 
@@ -15,7 +12,7 @@
       var myLatLng = {lat: -25.363, lng: 131.044};
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 12,
         center: myLatLng
       });
 
@@ -28,7 +25,7 @@
   </script>
 
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2QWmT1k9Bucm_p4_CR34mFZJnB1Q22h4&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPMsnNvD9ly_cO8SmQSMd0Xvi0QOdLYhM&callback=initMap">
   </script>
 
 <div id="map"></div>
