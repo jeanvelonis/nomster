@@ -137,3 +137,16 @@
     Add a photo
   </button>
 </div>
+
+<div class="clear"></div>
+
+<div class="row">
+<% @place.photos.each do |comment| %>
+  <div class="col-12 col-sm-6">
+    <blockquote>
+      <%= photo.caption %>
+      <small><%= photo.user.email %></small>
+    </blockquote>
+  </div>
+<% end %>
+</div>
