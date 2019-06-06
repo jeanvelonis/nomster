@@ -23,6 +23,9 @@
 <% if place.photos.present? %>
   <div class="col-12">
     <blockquote>
+      <% if place.photos.last.picture.present? %>
+        <b><%= place.photos.last.picture %></b> -
+      <% end %>
       <%= place.photos.last.caption %>
       <small><%= place.photos.last.user.email %></small>
     </blockquote>
